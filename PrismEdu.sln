@@ -15,6 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Bootstrap", "01.Bootstra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldApp", "01.Bootstrap\HelloWorldApp\HelloWorldApp.csproj", "{14972B20-B123-4D0E-9E69-8CE2F0B81EF3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{1AE025EB-EE2C-488C-8F73-C2EDA6747129}"
+	ProjectSection(SolutionItems) = preProject
+		01.Bootstrap\Images\shell.png = 01.Bootstrap\Images\shell.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{14972B20-B123-4D0E-9E69-8CE2F0B81EF3} = {D10D0804-BB61-4559-9673-6754D878A99A}
+		{1AE025EB-EE2C-488C-8F73-C2EDA6747129} = {D10D0804-BB61-4559-9673-6754D878A99A}
 	EndGlobalSection
 EndGlobal

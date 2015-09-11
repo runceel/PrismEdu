@@ -52,5 +52,43 @@ namespace HelloWorldApp
 	- Bootstrapper.cs
 
 
+最後に、Bootstrapperを使うようにアプリケーションの起動処理を書き換えます。App.xamlを以下のように書き換えてApplication_Startupイベントハンドラを作成します。
 
+```xml
+<Application x:Class="HelloWorldApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HelloWorldApp"
+             Startup="Application_Startup">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
+```
 
+Application_StartupイベントハンドラにBootstrapperの起動処理を書きます。
+
+```cs
+using System.Windows;
+
+namespace HelloWorldApp
+{
+    /// <summary>
+    /// App.xaml の相互作用ロジック
+    /// </summary>
+    public partial class App : Application
+    {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            // Bootstrapperを起動する
+            new Bootstrapper().Run();
+        }
+    }
+}
+```
+
+この状態でアプリケーションを起動すると以下のようにWindowが表示されます。
+
+[Window](Images/shell.png)
+
+以上がPrismを使った最小のアプリケーションになります。
