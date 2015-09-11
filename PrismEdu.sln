@@ -32,6 +32,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{525294
 		02.ViewModelLocator\Images\shell.png = 02.ViewModelLocator\Images\shell.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Modul", "03.Modul", "{6C48D622-C819-4E7D-87A8-F9343CC27E67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleApp", "03.Module\ModuleApp\ModuleApp.csproj", "{85129EB5-1406-4E1C-8E6B-1C307CFF4F3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{A7E8A87F-9044-495A-80E3-C1BCE90ABB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7E8A87F-9044-495A-80E3-C1BCE90ABB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7E8A87F-9044-495A-80E3-C1BCE90ABB46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85129EB5-1406-4E1C-8E6B-1C307CFF4F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85129EB5-1406-4E1C-8E6B-1C307CFF4F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85129EB5-1406-4E1C-8E6B-1C307CFF4F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85129EB5-1406-4E1C-8E6B-1C307CFF4F3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +63,6 @@ Global
 		{1AE025EB-EE2C-488C-8F73-C2EDA6747129} = {D10D0804-BB61-4559-9673-6754D878A99A}
 		{A7E8A87F-9044-495A-80E3-C1BCE90ABB46} = {05FB80D8-4803-4D11-9842-0EDF140ABA87}
 		{525294F1-174A-47E7-BF59-E985461F9CA5} = {05FB80D8-4803-4D11-9842-0EDF140ABA87}
+		{85129EB5-1406-4E1C-8E6B-1C307CFF4F3C} = {6C48D622-C819-4E7D-87A8-F9343CC27E67}
 	EndGlobalSection
 EndGlobal
