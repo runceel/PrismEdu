@@ -27,6 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.ViewModelLocator", "02.V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModelLocatorSampleApp", "02.ViewModelLocator\ViewModelLocatorSampleApp\ViewModelLocatorSampleApp.csproj", "{A7E8A87F-9044-495A-80E3-C1BCE90ABB46}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{525294F1-174A-47E7-BF59-E985461F9CA5}"
+	ProjectSection(SolutionItems) = preProject
+		02.ViewModelLocator\Images\shell.png = 02.ViewModelLocator\Images\shell.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,5 +54,6 @@ Global
 		{14972B20-B123-4D0E-9E69-8CE2F0B81EF3} = {D10D0804-BB61-4559-9673-6754D878A99A}
 		{1AE025EB-EE2C-488C-8F73-C2EDA6747129} = {D10D0804-BB61-4559-9673-6754D878A99A}
 		{A7E8A87F-9044-495A-80E3-C1BCE90ABB46} = {05FB80D8-4803-4D11-9842-0EDF140ABA87}
+		{525294F1-174A-47E7-BF59-E985461F9CA5} = {05FB80D8-4803-4D11-9842-0EDF140ABA87}
 	EndGlobalSection
 EndGlobal
