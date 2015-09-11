@@ -2,4 +2,5 @@
 
 このリポジトリは、Prism 6.0の自習用リポジトリです。
 
-[01.Bootstrapperを使おう](01.Bootstrap/README.md)
++ [Bootstrapperを使おう](01.Bootstrap/README.md)
++ [ViewModelLocatorを使おう](02.ViewModelLocator/README.md)
