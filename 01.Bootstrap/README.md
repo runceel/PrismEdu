@@ -1,4 +1,4 @@
-# Bootstrapを使おう
+# Bootstrapperを使おう
 
 Prismでは、アプリケーションの起動シーケンスを司るBootstrapクラスが用意されています。ここでは、これを使って画面を表示するだけのHello worldアプリケーションを作成してみます。
 
