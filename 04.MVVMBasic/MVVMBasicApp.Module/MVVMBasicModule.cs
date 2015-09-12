@@ -28,6 +28,7 @@ namespace MVVMBasicApp.Module
 
             this.RegionManager.RegisterViewWithRegion("MainRegion", typeof(BindableBaseSampleView));
             this.RegionManager.RegisterViewWithRegion("MainRegion", typeof(DelegateCommandSampleView));
+            this.RegionManager.RegisterViewWithRegion("MainRegion", typeof(ErrorsContainerSampleView));
         }
     }
 }

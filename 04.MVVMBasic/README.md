@@ -106,3 +106,93 @@ namespace MVVMBasicApp.Module.ViewModels
 }
 ```
 
+## ErrorsContainerクラス
+
+Prismには、INotifyDataErrorInfoインターフェースの実装を補助するErrorsContainerクラスがあります。このクラスを使うことで簡単にINotifyDataErrorInfoを使った入力値の検証機能を持ったクラスを作成できます。
+ErrorsContainerクラスは、型引数にエラーの型(大体string)を指定して使います。
+コンストラクタには、ErrorsChangedイベントの呼び出し処理を渡します。
+そして、INotifyDataErrorInfoインターフェースのHasErrsプロパティと、GetErrorsメソッドの処理をやってくれるメソッドを持っています。そのため、INotifyDataErrorInfoの実装クラスでは
+ErrorsContainerに移譲するだけですみます。
+
+あとは、任意のタイミングでSetErrors(propertyName, errorInfo)でエラー情報を設定して、ClearErrors(propertyName)でエラーのクリアをするだけです。以下に簡単にINotifyDataErrorInfoを実装したクラスの例を示します。
+
+```cs
+using Prism.Mvvm;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+namespace MVVMBasicApp.Module.ViewModels
+{
+    class ErrorsContainerSampleViewModel : BindableBase, INotifyDataErrorInfo
+    {
+        public string HeaderText { get; } = "ErrorContainerSample";
+
+        private string input;
+
+        [Required(ErrorMessage = "入力してください")]
+        public string Input
+        {
+            get { return this.input; }
+            set { this.SetProperty(ref this.input, value); }
+        }
+
+
+        public ErrorsContainerSampleViewModel()
+        {
+            this.ErrorsContainer = new ErrorsContainer<string>(
+                x => this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(x)));
+        }
+
+        #region Validation
+        private ErrorsContainer<string> ErrorsContainer { get; }
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
+        protected override bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        {
+            if(!base.SetProperty<T>(ref storage, value, propertyName))
+            {
+                return false;
+            }
+
+            var context = new ValidationContext(this)
+            {
+                MemberName = propertyName
+            };
+
+            var errors = new List<ValidationResult>();
+            if (!Validator.TryValidateProperty(value, context, errors))
+            {
+                this.ErrorsContainer.SetErrors(propertyName, errors.Select(x => x.ErrorMessage));
+            }
+            else
+            {
+                this.ErrorsContainer.ClearErrors(propertyName);
+            }
+
+            return true;
+        }
+
+        public bool HasErrors
+        {
+            get
+            {
+                return this.ErrorsContainer.HasErrors;
+            }
+        }
+		Data
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return this.ErrorsContainer.GetErrors(propertyName);
+        }
+        #endregion
+    }
+}
+```
+
+BindableBaseクラスのSetPropertyメソッドをオーバーライドして、DataAnnotationsを使った入力値の検証をしているクラスになります。Inputプロパティが未入力の場合はエラーになります。
