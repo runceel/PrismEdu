@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="MVVMBasicApp.Module.Views.DelegateCommandSampleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMBasicApp.Module.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <Label Content="入力" />
+        <TextBox Text="{Binding Input, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Content="出力" />
+        <TextBlock Text="{Binding Output}" />
+        <Button Content="大文字化"
+                Command="{Binding ToUpperCommand}" />
+    </StackPanel>
+</UserControl>
