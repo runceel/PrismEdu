@@ -4,3 +4,4 @@
 
 + [Bootstrapper‚ðŽg‚¨‚¤](01.Bootstrap/README.md)
 + [ViewModelLocator‚ðŽg‚¨‚¤](02.ViewModelLocator/README.md)
++ [Module‚ÆRegion‚ðŽg‚¨‚¤](03.Modul/README.md)

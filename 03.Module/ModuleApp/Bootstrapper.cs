@@ -1,13 +1,8 @@
-﻿using Prism.Unity;
-using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Microsoft.Practices.Unity;
 using ModuleApp.Views;
 using Prism.Modularity;
+using Prism.Unity;
+using System.Windows;
 
 namespace ModuleApp
 {
@@ -23,11 +18,12 @@ namespace ModuleApp
             ((Window)this.Shell).Show();
         }
 
-        protected override IModuleCatalog CreateModuleCatalog()
+        protected override void ConfigureModuleCatalog()
         {
-            var catalog = (ModuleCatalog) base.CreateModuleCatalog();
+            base.ConfigureModuleCatalog();
+
+            var catalog = (ModuleCatalog)this.ModuleCatalog;
             catalog.AddModule(typeof(HelloWorldModule.HelloWorldModule));
-            return catalog;
         }
 
     }
