@@ -50,6 +50,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMBasicApp", "04.MVVMBasi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMBasicApp.Module", "04.MVVMBasic\MVVMBasicApp.Module\MVVMBasicApp.Module.csproj", "{CF18FCAA-501D-454F-ACCB-82AEC44F3454}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.InteractionRequest", "05.InteractionRequest", "{B6E53A8F-1A97-4B58-A235-644B724704FD}"
+	ProjectSection(SolutionItems) = preProject
+		05.InteractionRequest\README.md = 05.InteractionRequest\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionRequestSampleApp", "05.InteractionRequest\InteractionRequestSampleApp\InteractionRequestSampleApp.csproj", "{70BD793A-A5F4-4B92-AEA0-28CDEE77138A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionRequestSampleModule", "05.InteractionRequest\InteractionRequestSampleModule\InteractionRequestSampleModule.csproj", "{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{F50A39BF-82AC-4DBC-A03F-F0A9602DCD62}"
+	ProjectSection(SolutionItems) = preProject
+		05.InteractionRequest\Images\Confirmation.png = 05.InteractionRequest\Images\Confirmation.png
+		05.InteractionRequest\Images\CustomNotification.png = 05.InteractionRequest\Images\CustomNotification.png
+		05.InteractionRequest\Images\Notification.png = 05.InteractionRequest\Images\Notification.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +96,14 @@ Global
 		{CF18FCAA-501D-454F-ACCB-82AEC44F3454}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF18FCAA-501D-454F-ACCB-82AEC44F3454}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF18FCAA-501D-454F-ACCB-82AEC44F3454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70BD793A-A5F4-4B92-AEA0-28CDEE77138A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70BD793A-A5F4-4B92-AEA0-28CDEE77138A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70BD793A-A5F4-4B92-AEA0-28CDEE77138A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70BD793A-A5F4-4B92-AEA0-28CDEE77138A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,5 +117,8 @@ Global
 		{AD66186C-FEFC-4113-A444-F2299AE18AB1} = {6C48D622-C819-4E7D-87A8-F9343CC27E67}
 		{30528337-8DAF-4D49-B92F-D3DE78D54428} = {D7CF6107-2498-4184-B471-04641BEC1593}
 		{CF18FCAA-501D-454F-ACCB-82AEC44F3454} = {D7CF6107-2498-4184-B471-04641BEC1593}
+		{70BD793A-A5F4-4B92-AEA0-28CDEE77138A} = {B6E53A8F-1A97-4B58-A235-644B724704FD}
+		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A} = {B6E53A8F-1A97-4B58-A235-644B724704FD}
+		{F50A39BF-82AC-4DBC-A03F-F0A9602DCD62} = {B6E53A8F-1A97-4B58-A235-644B724704FD}
 	EndGlobalSection
 EndGlobal
