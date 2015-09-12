@@ -32,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{525294
 		02.ViewModelLocator\Images\shell.png = 02.ViewModelLocator\Images\shell.png
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Modul", "03.Modul", "{6C48D622-C819-4E7D-87A8-F9343CC27E67}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Module", "03.Module", "{6C48D622-C819-4E7D-87A8-F9343CC27E67}"
 	ProjectSection(SolutionItems) = preProject
 		03.Module\README.md = 03.Module\README.md
 	EndProjectSection

@@ -4,4 +4,4 @@
 
 + [Bootstrapperを使おう](01.Bootstrap/README.md)
 + [ViewModelLocatorを使おう](02.ViewModelLocator/README.md)
-+ [ModuleとRegionを使おう](03.Modul/README.md)
++ [ModuleとRegionを使おう](03.Module/README.md)
