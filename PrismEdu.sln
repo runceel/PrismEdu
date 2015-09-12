@@ -66,6 +66,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{F50A39
 		05.InteractionRequest\Images\Notification.png = 05.InteractionRequest\Images\Notification.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06.Navigation", "06.Navigation", "{E2DAF29F-78E9-428A-B53B-A15B19CD4BDD}"
+	ProjectSection(SolutionItems) = preProject
+		06.Navigation\README.md = 06.Navigation\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationSampleApp", "06.Navigation\NavigationSampleApp\NavigationSampleApp.csproj", "{DFEB101A-C538-468A-A0EC-A7DEDA8FB977}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +111,10 @@ Global
 		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEB101A-C538-468A-A0EC-A7DEDA8FB977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEB101A-C538-468A-A0EC-A7DEDA8FB977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEB101A-C538-468A-A0EC-A7DEDA8FB977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEB101A-C538-468A-A0EC-A7DEDA8FB977}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,5 +131,6 @@ Global
 		{70BD793A-A5F4-4B92-AEA0-28CDEE77138A} = {B6E53A8F-1A97-4B58-A235-644B724704FD}
 		{DB40DA0C-F8E2-41B1-889A-9F79F600FC9A} = {B6E53A8F-1A97-4B58-A235-644B724704FD}
 		{F50A39BF-82AC-4DBC-A03F-F0A9602DCD62} = {B6E53A8F-1A97-4B58-A235-644B724704FD}
+		{DFEB101A-C538-468A-A0EC-A7DEDA8FB977} = {E2DAF29F-78E9-428A-B53B-A15B19CD4BDD}
 	EndGlobalSection
 EndGlobal

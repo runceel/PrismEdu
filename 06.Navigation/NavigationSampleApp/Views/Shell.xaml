@@ -1,0 +1,41 @@
+﻿<Window x:Class="NavigationSampleApp.Views.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NavigationSampleApp.Views"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:ViewModels="clr-namespace:NavigationSampleApp.ViewModels"
+        mc:Ignorable="d"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        d:DataContext="{d:DesignInstance Type=ViewModels:ShellViewModel, IsDesignTimeCreatable=True}"
+        Title="Shell"
+        Height="300"
+        Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="AView - 1" 
+                      Command="{Binding AViewCommand}"
+                      CommandParameter="1"/>
+            <MenuItem Header="AView - 2" 
+                      Command="{Binding AViewCommand}"
+                      CommandParameter="2"/>
+            <MenuItem Header="BView" 
+                      Command="{Binding BViewCommand}"/>
+        </Menu>
+
+        <TabControl prism:RegionManager.RegionName="MainRegion"
+                    Grid.Row="1">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem">
+                    <Setter Property="Header" Value="TabItem" />
+                </Style>
+            </TabControl.ItemContainerStyle>
+        </TabControl>
+    </Grid>
+</Window>
