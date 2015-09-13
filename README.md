@@ -8,3 +8,4 @@
 + [MVVMの基本クラス](04.MVVMBasic)
 + [ユーザーとの対話を実現するInteractionRequest](05.InteractionRequest)
 + [ナビゲーション詳細](06.Navigation)
++ [モジュール間の通信をするEventAggregator](07.EventAggregator)
