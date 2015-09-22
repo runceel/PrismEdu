@@ -101,6 +101,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleCommon", "08.ModuleLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleB", "08.ModuleLoadSeq\ModuleB\ModuleB.csproj", "{71457635-A1EB-499A-85A5-7D83BFAD5470}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09.RegionBehavior", "09.RegionBehavior", "{1102EBF3-BE60-4C3E-9D67-0ED90EE8460D}"
+	ProjectSection(SolutionItems) = preProject
+		09.RegionBehavior\README.md = 09.RegionBehavior\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisposeBehaviorSampleApp", "09.RegionBehavior\DisposeBehaviorSampleApp\DisposeBehaviorSampleApp.csproj", "{AF5922DF-ED11-4215-8304-3F03A83050EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisposeBehaviorSampleApp.ModuleA", "09.RegionBehavior\DisposeBehaviorSampleApp.ModuleA\DisposeBehaviorSampleApp.ModuleA.csproj", "{164DF3C4-7487-402C-BC44-B4B210C5DC53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +188,14 @@ Global
 		{71457635-A1EB-499A-85A5-7D83BFAD5470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71457635-A1EB-499A-85A5-7D83BFAD5470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71457635-A1EB-499A-85A5-7D83BFAD5470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5922DF-ED11-4215-8304-3F03A83050EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5922DF-ED11-4215-8304-3F03A83050EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5922DF-ED11-4215-8304-3F03A83050EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5922DF-ED11-4215-8304-3F03A83050EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164DF3C4-7487-402C-BC44-B4B210C5DC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164DF3C4-7487-402C-BC44-B4B210C5DC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164DF3C4-7487-402C-BC44-B4B210C5DC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164DF3C4-7487-402C-BC44-B4B210C5DC53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -205,5 +222,7 @@ Global
 		{62C347D6-90B0-4DDA-91FC-DC34704A362B} = {7ABA78ED-A8CC-41D2-97CB-1A87B3E75C2D}
 		{144534C6-B039-4025-92D0-86AF9FD21DA3} = {7ABA78ED-A8CC-41D2-97CB-1A87B3E75C2D}
 		{71457635-A1EB-499A-85A5-7D83BFAD5470} = {7ABA78ED-A8CC-41D2-97CB-1A87B3E75C2D}
+		{AF5922DF-ED11-4215-8304-3F03A83050EE} = {1102EBF3-BE60-4C3E-9D67-0ED90EE8460D}
+		{164DF3C4-7487-402C-BC44-B4B210C5DC53} = {1102EBF3-BE60-4C3E-9D67-0ED90EE8460D}
 	EndGlobalSection
 EndGlobal
