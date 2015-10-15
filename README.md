@@ -14,4 +14,4 @@
 + [RegionBehavior](09.RegionBehavior)
 
 ## Prism.UWP
-+[Prism.UWPŠT—v](UWP/01.Intro)
++ [Prism.UWPŠT—v](UWP/01.Intro)
