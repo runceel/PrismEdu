@@ -106,7 +106,7 @@ namespace MVVMBasicApp.Module.ViewModels
 }
 ```
 
-## ErrorsContainerクラス
+## ErrorsContainerクラス(WPFのみ)
 
 Prismには、INotifyDataErrorInfoインターフェースの実装を補助するErrorsContainerクラスがあります。このクラスを使うことで簡単にINotifyDataErrorInfoを使った入力値の検証機能を持ったクラスを作成できます。
 ErrorsContainerクラスは、型引数にエラーの型(大体string)を指定して使います。
