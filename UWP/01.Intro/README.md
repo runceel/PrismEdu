@@ -1,9 +1,9 @@
-# Prism.UWPとは
+# Prism.Windowsとは
 
-Prism.UWPは、Universal Windows Platformアプリ（UWPアプリ）向けのPrismになります。
+Prism.Windowsは、Universal Windows Platformアプリ（UWPアプリ）向けのPrismになります。
 UWPアプリを作成するために、よく作るようなクラスがある程度実装されていたり、XAML系プラットフォームでは鉄板の設計方法であるMVVMパターンを支援する機能が各種盛り込まれています。
 
-Prism.UWPを導入することで得られるメリットを以下に示します。
+Prism.Windowsを導入することで得られるメリットを以下に示します。
 
 - MVVMの基本クラス
 	- INotifyPropertyChangedの実装クラス(BindableBase)

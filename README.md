@@ -13,7 +13,8 @@
 + [Moduleの読み込み処理](08.ModuleLoadSeq)
 + [RegionBehavior](09.RegionBehavior)
 
-## Prism.UWP
-+ [Prism.UWP概要](UWP/01.Intro)
+## Prism.Windows
++ [Prism.Windows概要](UWP/01.Intro)
 + [Hello world](UWP/02.HelloWorld)
 + [画面遷移](UWP/03.Navigation)
++ [デバイスサービス](UWP/04.Device)
