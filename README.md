@@ -18,3 +18,4 @@
 + [Hello world](UWP/02.HelloWorld)
 + [画面遷移](UWP/03.Navigation)
 + [デバイスサービス](UWP/04.Device)
++ [MVVMの基本クラス](UWP/05.MVVM)
