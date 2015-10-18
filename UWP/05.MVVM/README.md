@@ -1,4 +1,3 @@
-# 戻るボタン・ハードウェアボタン対応
 # MVVMの基本クラス
 
 PrismにはMVVMを支援するクラスがいくつか定義されています。
@@ -13,7 +12,7 @@ BindableBase及び、DelegateCommandについてはWPF版と共通なためそちらを参照してくだ
 [MVVMの基本クラス](../../04.MVVMBasic/README.md)
 
 ViewModelBaseについては、画面遷移用のコールバック機能と一時保存に対応したBindableBaseの派生クラスです。
-画面遷移については、[画面遷移](../04.Navigation/README.md)を参照してください。
+画面遷移については、[画面遷移](../03.Navigation/README.md)を参照してください。
 一時保存については別記事で解説します。
 
 ## ValidatableBindableBase
