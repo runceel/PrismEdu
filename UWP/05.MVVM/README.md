@@ -106,3 +106,10 @@ public async void Alert()
     }
 }
 ```
+
+### 検証機能の一時無効化
+
+通常はプロパティがセットされたタイミングで値の検証がされますが、これを無効化することができます。
+IsValidationEnabledプロパティをfalseに設定することで無効化できます。
+
+IsValidationEnabledをfalseに設定したときはValidatePropertiesを呼び出すことで強制的に全プロパティの検証を行えます。
