@@ -12,6 +12,7 @@
 + [モジュール間の通信をするEventAggregator](07.EventAggregator)
 + [Moduleの読み込み処理](08.ModuleLoadSeq)
 + [RegionBehavior](09.RegionBehavior)
++ [App.configによるModuleCatalogの構成](10.ModuleCatalog)
 
 ## Prism.Windows
 + [Prism.Windows概要](UWP/01.Intro)

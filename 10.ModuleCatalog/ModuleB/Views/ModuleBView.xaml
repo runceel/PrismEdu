@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ModuleB.Views.ModuleBView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Prism="http://prismlibrary.com/"
+             xmlns:local="clr-namespace:ModuleB.Views"
+             mc:Ignorable="d"
+             Prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <StackPanel>
+        <Label Content="Lhs" />
+        <TextBox Text="{Binding Lhs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Content="Rhs" />
+        <TextBox Text="{Binding Rhs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Content="Add"
+                Command="{Binding AddCommand}" />
+        <TextBlock Text="{Binding Answer}" />
+        <Separator />
+        <Button Content="Load ModuleC"
+                Command="{Binding LoadModuleCCommand}" />
+    </StackPanel>
+</UserControl>
