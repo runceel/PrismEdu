@@ -1,13 +1,13 @@
-# ��ʑJ��
+# 画面遷移
 
-Prism�̉�ʑJ�ڂ́AViewModel�N���X��INavigationService�C���^�[�t�F�[�X���g�p���čs���܂��B
-INavigationService�́APrismUnityApplication�ɒ�`����Ă��邽�߁AViewModel�N���X�ɂ�DI���Ďg���K�v������܂��B
-�����ł́A�{�^�������������ʑJ�ڂ���ȒP�ȃA�v���P�[�V�������쐬�������Ǝv���܂��B
+Prismの画面遷移は、ViewModelクラスでINavigationServiceインターフェースを使用して行います。
+INavigationServiceは、PrismUnityApplicationに定義されているため、ViewModelクラスにはDIして使う必要があります。
+ここでは、ボタンを押したら画面遷移する簡単なアプリケーションを作成したいと思います。
 
-## �v���W�F�N�g�̍쐬
+## プロジェクトの作成
 
-NavigationApp�Ƃ������O��UWP�A�v�������Prism.Unity��NuGet����Q�Ƃɒǉ����܂��B
-App�N���X���ȉ��̂悤�ɕҏW���ď�����Ԃ�MainPage�ɉ�ʑJ�ڂ���悤�ɂ��܂��B
+NavigationAppという名前でUWPアプリを作りPrism.UnityをNuGetから参照に追加します。
+Appクラスを以下のように編集して初期状態でMainPageに画面遷移するようにします。
 
 ```cs
 using Prism.Unity.Windows;
@@ -17,13 +17,13 @@ using Windows.ApplicationModel.Activation;
 namespace NavigationApp
 {
     /// <summary>
-    /// ����� Application �N���X��⊮����A�v���P�[�V�����ŗL�̓����񋟂��܂��B
+    /// 既定の Application クラスを補完するアプリケーション固有の動作を提供します。
     /// </summary>
     sealed partial class App : PrismUnityApplication
     {
         /// <summary>
-        /// �P��A�v���P�[�V���� �I�u�W�F�N�g�����������܂��B����́A���s�����쐬�����R�[�h��
-        ///�ŏ��̍s�ł��邽�߁Amain() �܂��� WinMain() �Ƙ_���I�ɓ����ł��B
+        /// 単一アプリケーション オブジェクトを初期化します。これは、実行される作成したコードの
+        ///最初の行であるため、main() または WinMain() と論理的に等価です。
         /// </summary>
         public App()
         {
@@ -39,7 +39,7 @@ namespace NavigationApp
 }
 ```
 
-App.xaml������{�N���X��PrismUnityApplication�ɂȂ�悤�Ƀ^�O�����������܂��B
+App.xaml側も基本クラスがPrismUnityApplicationになるようにタグを書き換えます。
 
 ```xml
 <prism:PrismUnityApplication x:Class="NavigationApp.App"
@@ -52,10 +52,10 @@ App.xaml������{�N���X��PrismUnityApplication�ɂȂ�悤�Ƀ^�O�����������܂��B
 </prism:PrismUnityApplication>
 ```
 
-## MainPage�̍쐬
+## MainPageの作成
 
-Views/MainPage.xaml���쐬���܂��B
-��ʂɂ�MainPage�Ƃ������Ƃ��킩�邽�߂�TextBlock�Ɖ�ʑJ�ڂ̌_�@�ƂȂ�Button��u���Ă܂��B
+Views/MainPage.xamlを作成します。
+画面にはMainPageということがわかるためのTextBlockと画面遷移の契機となるButtonを置いてます。
 
 ```xml
 <Page x:Class="NavigationApp.Views.MainPage"
@@ -71,23 +71,23 @@ Views/MainPage.xaml���쐬���܂��B
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="MainPage"
                    Style="{StaticResource HeaderTextBlockStyle}" />
-        <Button Content="��ʑJ��" />
+        <Button Content="画面遷移" />
     </StackPanel>
 </Page>
 ```
 
-AutoWIredViewModel�̒�`���Y�ꂸ�ɒǉ����܂��B����ViewModels/MainPageViewModel���쐬���܂��B
+AutoWiredViewModelの定義も忘れずに追加します。次にViewModels/MainPageViewModelを作成します。
 
-Prism�ł�ViewModel��ViewModelBase�N���X���p�����č쐬���܂��B
-ViewModelBase�N���X�ɂ́A��ʑJ�ڂ��Ă����Ƃ��ɌĂ΂��OnNavigatedTo���\�b�h�Ɖ�ʂ��痣���Ƃ��ɌĂ΂��OnNavigationgFrom���\�b�h����`����Ă��܂��B
-���ꂼ��̃��\�b�h���I�[�o�[���C�h���邱�ƂŁA��ʑJ�ڎ��̏�����ViewModel�ŋL�q�ł��܂��B
-Prism���g��Ȃ��ꍇ�́AView���ł����o���Ȃ����������ɂȂ�܂��B
+PrismではViewModelはViewModelBaseクラスを継承して作成します。
+ViewModelBaseクラスには、画面遷移してきたときに呼ばれるOnNavigatedToメソッドと画面から離れるときに呼ばれるOnNavigationgFromメソッドが定義されています。
+それぞれのメソッドをオーバーライドすることで、画面遷移時の処理をViewModelで記述できます。
+Prismを使わない場合は、View側でしか出来なかった処理になります。
 
-��ʑJ�ڏ����́AINavigationService���g���čs���܂��B
-Unity���g����Prism�ł́AViewModel�̃R���X�g���N�^��INavigationService���󂯎��悤�ɂ����ViewModel�̃C���X�^���X���̃^�C�~���O�Ŏ����I��INavigationService���n����܂��B
-���̃C���X�^���X���A�t�B�[���h�Ȃ�v���p�e�B�ɕێ����Ă����ĉ�ʑJ�ڂɎg���܂��B
+画面遷移処理は、INavigationServiceを使って行います。
+Unityを使ったPrismでは、ViewModelのコンストラクタにINavigationServiceを受け取るようにするとViewModelのインスタンス化のタイミングで自動的にINavigationServiceが渡されます。
+そのインスタンスを、フィールドなりプロパティに保持しておいて画面遷移に使います。
 
-�����ł́ANavigateNextPage���\�b�h�Ŏg�p���Ă��܂��B
+ここでは、NavigateNextPageメソッドで使用しています。
 
 ```cs
 using Prism.Windows.Mvvm;
@@ -101,14 +101,14 @@ namespace NavigationApp.ViewModels
     {
         private INavigationService NavigationService { get; }
 
-        // �R���X�g���N�^���`���邱�Ƃ�Unity����C���X�^���X�������œn�����
+        // コンストラクタを定義することでUnityからインスタンスが自動で渡される
         public MainPageViewModel(INavigationService navigationService)
         {
-            // Unity����n���ꂽ�C���X�^���X��ێ�
+            // Unityから渡されたインスタンスを保持
             this.NavigationService = navigationService;
         }
 
-        // INavigationService���g���ĉ�ʑJ�ڂ��s��
+        // INavigationServiceを使って画面遷移を行う
         public void NavigateNextPage()
         {
             this.NavigationService.Navigate("Next", null);
@@ -117,21 +117,21 @@ namespace NavigationApp.ViewModels
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
-            Debug.WriteLine("MainPage�ɗ��܂���");
+            Debug.WriteLine("MainPageに来ました");
         }
 
         public override void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending)
         {
             base.OnNavigatingFrom(e, viewModelState, suspending);
-            Debug.WriteLine("MainPage���痣��܂�");
+            Debug.WriteLine("MainPageから離れます");
         }
     }
 }
 ```
 
-MainPage��XAML����NavigateNextPage���Ăяo���悤�ɂ��܂��B
-�܂��A�R���p�C�����f�[�^�o�C���f�B���O�̂��߂̃v���p�e�B��MainPage.xaml.cs�ɒ�`���܂��B
-DataContext���L���X�g���ĕԂ��Ă��邾���ɂȂ�܂��B
+MainPageのXAMLからNavigateNextPageを呼び出すようにします。
+まず、コンパイル時データバインディングのためのプロパティをMainPage.xaml.csに定義します。
+DataContextをキャストして返しているだけになります。
 
 ```cs
 using NavigationApp.ViewModels;
@@ -151,7 +151,7 @@ namespace NavigationApp.Views
 }
 ```
 
-�����āAButton��Click�C�x���g��NavigateNextPage���\�b�h���o�C���h���܂��B
+そして、ButtonのClickイベントにNavigateNextPageメソッドをバインドします。
 
 ```xml
 <Page x:Class="NavigationApp.Views.MainPage"
@@ -167,15 +167,15 @@ namespace NavigationApp.Views
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="MainPage"
                    Style="{StaticResource HeaderTextBlockStyle}" />
-        <Button Content="��ʑJ��" 
+        <Button Content="画面遷移" 
                 Click="{x:Bind ViewModel.NavigateNextPage}"/>
     </StackPanel>
 </Page>
 ```
 
-## NextPage�̍쐬
+## NextPageの作成
 
-���ɑ@�ې��NextPage���쐬���܂��B�V���v����TextBlock��u���������̉�ʂł��B
+次に繊維先のNextPageを作成します。シンプルにTextBlockを置いただけの画面です。
 
 ```xml
 <Page x:Class="NavigationApp.Views.NextPage"
@@ -194,15 +194,15 @@ namespace NavigationApp.Views
 ```
 
 
-## ���s���ē���m�F
+## 実行して動作確認
 
-���s����ƁAMainPage���\������A�{�^����������NextPage���\������܂��B
-���̂Ƃ��f�o�b�O�o�͂Ɉȉ��̂悤�ȃ��b�Z�[�W���\������邱�Ƃ��m�F�ł��܂��B�iMainPageViewModel�Ŏd���񂾃��O�j
+実行すると、MainPageが表示され、ボタンを押すとNextPageが表示されます。
+このときデバッグ出力に以下のようなメッセージが表示されることも確認できます。（MainPageViewModelで仕込んだログ）
 
 
 ```
-MainPage�ɗ��܂���
-MainPage���痣��܂�
+MainPageに来ました
+MainPageから離れます
 ```
 
 ![1.png](Images/1.png)
