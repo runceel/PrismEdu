@@ -69,6 +69,6 @@ namespace HelloWorldApp
 
 この状態でアプリケーションを起動すると以下のようにWindow が表示されます。
 
-![Window](Images/shell.png)
+![Window](images/shell.png)
 
 以上がPrismを使った最小のアプリケーションになります。
