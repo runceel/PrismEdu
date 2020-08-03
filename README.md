@@ -1,22 +1,22 @@
-# PrismŽ©K—pƒŠƒ|ƒWƒgƒŠ
+# Prismè‡ªç¿’ç”¨ãƒªãƒã‚¸ãƒˆãƒª
 
-‚±‚ÌƒŠƒ|ƒWƒgƒŠ‚ÍAPrism 6.0‚ÌŽ©K—pƒŠƒ|ƒWƒgƒŠ‚Å‚·B
+ã“ã®ãƒªãƒã‚¸ãƒˆãƒªã¯ã€Prism 6.0ã®è‡ªç¿’ç”¨ãƒªãƒã‚¸ãƒˆãƒªã§ã™ã€‚
 
 ## Prism.Wpf
-+ [Bootstrapper‚ðŽg‚¨‚¤](01.Bootstrap)
-+ [ViewModelLocator‚ðŽg‚¨‚¤](02.ViewModelLocator)
-+ [Module‚ÆRegion‚ðŽg‚¨‚¤](03.Module)
-+ [MVVM‚ÌŠî–{ƒNƒ‰ƒX](04.MVVMBasic)
-+ [ƒ†[ƒU[‚Æ‚Ì‘Î˜b‚ðŽÀŒ»‚·‚éInteractionRequest](05.InteractionRequest)
-+ [ƒiƒrƒQ[ƒVƒ‡ƒ“Ú×](06.Navigation)
-+ [ƒ‚ƒWƒ…[ƒ‹ŠÔ‚Ì’ÊM‚ð‚·‚éEventAggregator](07.EventAggregator)
-+ [Module‚Ì“Ç‚Ýž‚Ýˆ—](08.ModuleLoadSeq)
++ [Bootstrapperã‚’ä½¿ãŠã†](01.Bootstrap)
++ [ViewModelLocatorã‚’ä½¿ãŠã†](02.ViewModelLocator)
++ [Moduleã¨Regionã‚’ä½¿ãŠã†](03.Module)
++ [MVVMã®åŸºæœ¬ã‚¯ãƒ©ã‚¹](04.MVVMBasic)
++ [ãƒ¦ãƒ¼ã‚¶ãƒ¼ã¨ã®å¯¾è©±ã‚’å®Ÿç¾ã™ã‚‹InteractionRequest](05.InteractionRequest)
++ [ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³è©³ç´°](06.Navigation)
++ [ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«é–“ã®é€šä¿¡ã‚’ã™ã‚‹EventAggregator](07.EventAggregator)
++ [Moduleã®èª­ã¿è¾¼ã¿å‡¦ç†](08.ModuleLoadSeq)
 + [RegionBehavior](09.RegionBehavior)
-+ [App.config‚É‚æ‚éModuleCatalog‚Ì\¬](10.ModuleCatalog)
++ [App.configã«ã‚ˆã‚‹ModuleCatalogã®æ§‹æˆ](10.ModuleCatalog)
 
 ## Prism.Windows
-+ [Prism.WindowsŠT—v](UWP/01.Intro)
++ [Prism.Windowsæ¦‚è¦](UWP/01.Intro)
 + [Hello world](UWP/02.HelloWorld)
-+ [‰æ–Ê‘JˆÚ](UWP/03.Navigation)
-+ [ƒfƒoƒCƒXƒT[ƒrƒX](UWP/04.Device)
-+ [MVVM‚ÌŠî–{ƒNƒ‰ƒX](UWP/05.MVVM)
++ [ç”»é¢é·ç§»](UWP/03.Navigation)
++ [ãƒ‡ãƒã‚¤ã‚¹ã‚µãƒ¼ãƒ“ã‚¹](UWP/04.Device)
++ [MVVMã®åŸºæœ¬ã‚¯ãƒ©ã‚¹](UWP/05.MVVM)
