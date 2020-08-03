@@ -1,80 +1,103 @@
-# ViewModelLocator‚ğg‚¨‚¤
+# ViewModelLocator ã‚’ä½¿ãŠã†
 
-Prism‚Å‚ÍAView‚ÆViewModel‚ğ•R‚Ã‚¯‚é‚½‚ß‚Ì‹@”\‚Æ‚µ‚ÄViewModelLocator‚Æ‚¢‚¤‚à‚Ì‚ğ’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚·B‚±‚Ì‹@”\‚ğ—LŒø‚É‚·‚é‚É‚ÍWindow‚âUserControl‚È‚Ç‚ÌView‚ÉˆÈ‰º‚ÌXAML‚ğ’Ç‰Á‚·‚é‚¾‚¯‚Å‚·B
+Prism ã§ã¯ã€View ã¨ ViewModel ã‚’ç´ã¥ã‘ã‚‹ãŸã‚ã®æ©Ÿèƒ½ã¨ã—ã¦ ViewModelLocator ã¨ã„ã†ã‚‚ã®ã‚’æä¾›ã—ã¦ã„ã¾ã™ã€‚ã“ã®æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã«ã¯ Window ã‚„ UserControl ãªã©ã® View ã«ä»¥ä¸‹ã®å±æ€§ã‚’è¿½åŠ ã™ã‚‹ã ã‘ã§ã™ã€‚
 
 ```xml
 xmlns:prism="http://prismlibrary.com/"
 prism:ViewModelLocator.AutoWireViewModel="True"
 ```
 
-‚±‚ÌéŒ¾‚ğView‚ÌXAML‚É’Ç‰Á‚·‚é‚ÆˆÈ‰º‚Ì‚æ‚¤‚Èƒ‹[ƒ‹‚ÅViewModel‚ªŒˆ’è‚³‚ê‚Ü‚·B
+ã“ã®å®£è¨€ã‚’ View ã® XAML ã«è¿½åŠ ã™ã‚‹ã¨ä»¥ä¸‹ã®ã‚ˆã†ãªãƒ«ãƒ¼ãƒ«ã§å¯¾å¿œã™ã‚‹ ViewModel ãŒæ¢ã•ã‚Œã¾ã™ã€‚
 
-HogeProject.FooNamespace.Views.SampleWindow‚Æ‚¢‚¤View‚ª‚ ‚Á‚½ê‡AHogeProject.FooNamespace.ViewModels.SampleWindowViewModel‚Æ‚¢‚¤–¼‘O‚ÌViewModel‚ª©“®“I‚ÉDataContext‚ÉŠ„‚è“–‚Ä‚ç‚ê‚Ü‚·BiSampleView‚Ì‚æ‚¤‚ÉView‚Å–¼‘O‚ªI‚í‚éê‡‚ÍASampleViewModel‚É‚È‚è‚Ü‚·j
+HogeProject.FooNamespace.Views.SampleWindow ã¨ã„ã† View ãŒã‚ã£ãŸå ´åˆã€HogeProject.FooNamespace.ViewModels.SampleWindowViewModel ã¨ã„ã†åå‰ã®ViewModelãŒè‡ªå‹•çš„ã« DataContext ã«å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¾ã™ã€‚ï¼ˆSampleView ã®ã‚ˆã†ã« View ã§åå‰ãŒçµ‚ã‚ã‚‹å ´åˆã¯ SampleViewModel ã«ãªã‚Šã¾ã™ï¼‰
 
-Bootstrapper‚Ìg‚¢‚©‚½‚Åì‚Á‚½‚æ‚¤‚ÉViews–¼‘O‹óŠÔ‚ÉShellƒNƒ‰ƒX‚ğì‚Á‚Ä‚¢‚éƒP[ƒX‚É‚Â‚¢‚Äl‚¦‚Ä‚İ‚Ü‚·BShell‚É‘Î‚µ‚Äã‹L‚ÌXAML‚ğ’Ç‰Á‚·‚é‚ÆViewModels–¼‘O‹óŠÔ‚ÌShellViewModel‚ªDataContext‚Éİ’è‚³‚ê‚Ü‚·BˆÈ‰º‚Ì‚æ‚¤‚ÈViewModel‚ğ’è‹`‚µ‚Ä‚İ‚Ü‚µ‚½B
+PrismApplication ã®ä½¿ã„ã‹ãŸã§ä½œã£ãŸã‚ˆã†ã« Views åå‰ç©ºé–“ã« Shell ã‚¯ãƒ©ã‚¹ã‚’ä½œã£ã¦ã„ã‚‹ã‚±ãƒ¼ã‚¹ã«ã¤ã„ã¦è€ƒãˆã¦ã¿ã¾ã™ã€‚Shell ã«å¯¾ã—ã¦ä¸Šè¨˜ã®å±æ€§ã‚’è¿½åŠ ã™ã‚‹ã¨ ViewModels åå‰ç©ºé–“ã® ShellViewModel ãŒ DataContext ã«è¨­å®šã•ã‚Œã¾ã™ã€‚ä»¥ä¸‹ã®ã‚ˆã†ãª ViewModel ã‚’å®šç¾©ã—ã¦ã¿ã¾ã—ãŸã€‚
 
 ```cs
+using System.ComponentModel;
+
 namespace ViewModelLocatorSampleApp.ViewModels
 {
-    class ShellViewModel
+    // WPF ã¯ INotifyPropertyChanged ã‚’å®Ÿè£…ã—ã¦ã„ãªã„ã‚‚ã®ã‚’ DataContext ã«è¨­å®šã™ã‚‹ã¨
+    // ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯ã®åŸå› ã«ãªã‚‹ã®ã§å®Ÿè£…ã™ã‚‹ã‚ˆã†ã«ã—ã¾ã—ã‚‡ã†
+    // å¾Œè¿°ã—ã¾ã™ãŒã€Prism ã§ã¯è‡ªåˆ†ã§å®Ÿè£…ã™ã‚‹ã“ã¨ã¯ã»ã¨ã‚“ã©ã‚ã‚Šã¾ã›ã‚“ãŒã€ã“ã“ã§ã¯ã¾ã è‡ªåˆ†ã§å®Ÿè£…ã—ã¦ãŠãã¾ã™
+    public class ShellViewModel : INotifyPropertyChanged
     {
-        public string Message { get; } = "Hello world";
+        public event PropertyChangedEventHandler PropertyChanged;
+        public string Message => "Hello world";
+
     }
 }
 ```
 
-Shell‚Ì‚Ù‚¤‚ÅAMessageƒvƒƒpƒeƒB‚ğƒoƒCƒ“ƒh‚·‚é‚æ‚¤‚ÈTextBlock‚ğİ’u‚µ‚Ü‚·B
+Shell ã®ã»ã†ã§ã€Message ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ˆã†ãª TextBlock ã‚’è¨­ç½®ã—ã¾ã™ã€‚
 
 ```xml
-<Window x:Class="ViewModelLocatorSampleApp.Views.Shell"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ViewModelLocatorSampleApp.Views"
-        xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="True"
-        mc:Ignorable="d"
-        Title="Shell" Height="300" Width="300">
+<Window
+    x:Class="ViewModelLocatorSampleApp.Views.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ViewModelLocatorSampleApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="Shell"
+    Width="300"
+    Height="300"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
     <Grid>
         <TextBlock Text="{Binding Message}" />
     </Grid>
 </Window>
 ```
 
-Às‚·‚é‚ÆˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B
+å®Ÿè¡Œã™ã‚‹ã¨ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
 
 ![Shell](Images/shell.png)
 
-‚±‚Ì‚Æ‚«AShellViewModel‚Í©“®“I‚ÉUnityƒRƒ“ƒeƒi‚©‚çæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B‚»‚Ì‚½‚ßAˆÈ‰º‚Ì‚æ‚¤‚É‚·‚é‚±‚Æ‚ÅAƒIƒuƒWƒFƒNƒg‚ğŠO•”‚©‚çƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·B
+ã“ã®ã¨ãã€ShellViewModel ã¯è‡ªå‹•çš„ã« DI ã‚³ãƒ³ãƒ†ãƒŠã‹ã‚‰å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚ã“ã®ã‚·ãƒªãƒ¼ã‚ºã§ã¯ Prism.Unity ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ã®ã§ Unity ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚ãã®ãŸã‚ã€ä»¥ä¸‹ã®ã‚ˆã†ã«ã™ã‚‹ã“ã¨ã§ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤–éƒ¨ã‹ã‚‰ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚
 
 ```cs
+using System.ComponentModel;
+
 namespace ViewModelLocatorSampleApp.Models
 {
-    class MessageProvider
+    public class MessageProvider : INotifyPropertyChanged
     {
-        public string Message { get; } = "Hello World";
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Message => "Hello world";
     }
 }
 ```
 
-‚±‚ÌƒNƒ‰ƒX‚ğƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚·‚é‚æ‚¤‚ÉViewModel‚ğ‘‚«Š·‚¦‚Ü‚·B
+ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã™ã‚‹ã‚ˆã†ã« ViewModel ã‚’æ›¸ãæ›ãˆã¾ã™ã€‚
 
 ```cs
-using Microsoft.Practices.Unity;
+using System.ComponentModel;
 using ViewModelLocatorSampleApp.Models;
 
 namespace ViewModelLocatorSampleApp.ViewModels
 {
-    class ShellViewModel
+    // WPF ã¯ INotifyPropertyChanged ã‚’å®Ÿè£…ã—ã¦ã„ãªã„ã‚‚ã®ã‚’ DataContext ã«è¨­å®šã™ã‚‹ã¨
+    // ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯ã®åŸå› ã«ãªã‚‹ã®ã§å®Ÿè£…ã™ã‚‹ã‚ˆã†ã«ã—ã¾ã—ã‚‡ã†
+    // å¾Œè¿°ã—ã¾ã™ãŒã€Prism ã§ã¯è‡ªåˆ†ã§å®Ÿè£…ã™ã‚‹ã“ã¨ã¯ã»ã¨ã‚“ã©ã‚ã‚Šã¾ã›ã‚“ãŒã€ã“ã“ã§ã¯ã¾ã è‡ªåˆ†ã§å®Ÿè£…ã—ã¦ãŠãã¾ã™
+    public class ShellViewModel : INotifyPropertyChanged
     {
-        [Dependency]
-        public MessageProvider MessageProvider { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public MessageProvider MessageProvider { get; }
+
+        public ShellViewModel(MessageProvider messageProvider)
+        {
+            MessageProvider = messageProvider;
+        }
     }
 }
 ```
 
-XAML‚ÌBinding‚àMessageProvider‚ğg‚¤‚æ‚¤‚É‘‚«Š·‚¦‚Ü‚·B
+XAML ã® Binding ã‚‚ MessageProvider ã‚’ä½¿ã†ã‚ˆã†ã«æ›¸ãæ›ãˆã¾ã™ã€‚
 
 ```xml
 <Window x:Class="ViewModelLocatorSampleApp.Views.Shell"
@@ -93,4 +116,6 @@ XAML‚ÌBinding‚àMessageProvider‚ğg‚¤‚æ‚¤‚É‘‚«Š·‚¦‚Ü‚·B
 </Window>
 ```
 
-ÀsŒ‹‰Ê‚Íæ‚Ù‚Ç‚Æ•Ï‚í‚ç‚È‚¢‚½‚ßŠ„ˆ¤‚µ‚Ü‚·B‚±‚Ì‚æ‚¤‚ÉView‚ÆViewModel‚Ì•R‚Ã‚¯‚ÆAViewModel‚Ö‚ÌŠO•”ƒNƒ‰ƒX‚Ì’“ü‚È‚Ç‚ªg‚¦‚é‚Ì‚ªPrism‚ÆPrism.Unity‚ğg‚Á‚½‚Æ‚«‚Ì•Ö—˜‚È“_‚Å‚·B
+å®Ÿè¡Œçµæœã¯å…ˆã»ã©ã¨å¤‰ã‚ã‚‰ãªã„ãŸã‚çœç•¥ã—ã¾ã™ã€‚ã“ã®ã‚ˆã†ã« View ã¨ ViewModel ã®ç´ã¥ã‘ã¨ã€ViewModel ã¸ã®å¤–éƒ¨ã‚¯ãƒ©ã‚¹ã®æ³¨å…¥ãªã©ãŒä½¿ãˆã‚‹ã®ãŒ Prism ã‚’ä½¿ã£ãŸã¨ãã®ä¾¿åˆ©ãªç‚¹ã§ã™ã€‚
+
+å¾Œç¨‹ã®ç« ã§ç´¹ä»‹ã—ã¾ã™ãŒ View ã¨ ViewModel ã®ç´ã¥ã‘ãƒ«ãƒ¼ãƒ«ã¯ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºå¯èƒ½ã§ã™ã€‚ã‚ãã¾ã§ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æŒ™å‹•ã§ã¯ã€ã“ã“ã§èª¬æ˜ã—ãŸãƒ«ãƒ¼ãƒ«ã§ã®ç´ã¥ã‘ã«ãªã‚Šã¾ã™ã€‚
