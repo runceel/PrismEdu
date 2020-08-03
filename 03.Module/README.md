@@ -1,13 +1,13 @@
-# Module��Region
+# ModuleとRegion
 
-Prism�ɂ́AModule�ƌĂ΂��@�\������܂��B����̓A�v���P�[�V�����𕡐��̋@�\�ɕ������ĊJ�����邽�߂̎d�g�݂ł��BPrism�ł͍ŏI�I��Module�ɕ��������A�v���P�[�V�������܂Ƃߏグ��@�\������܂��B
+Prismには、Moduleと呼ばれる機能があります。これはアプリケーションを複数の機能に分割して開発するための仕組みです。Prismでは最終的にModuleに分割したアプリケーションをまとめ上げる機能があります。
 
-## Module�̎g����
+## Moduleの使い方
 
-�����ł͊ȒP��Module�̎g�����������܂��B�܂��AModule�����ɂ̓N���X���C�u�����v���W�F�N�g���쐬���܂��BWPF�̃N���X�Q���ŏ�����g����悤�ɃJ�X�^���R���g���[�������[�U�R���g���[���p�̃��C�u�������쐬����̂���Ԃ����Ȃ��Ă����ł��B�N���X���C�u�������쐬������A������Ԃō쐬����Ă���N���X���폜����Prism.Core��Prism.Unity��NuGet����ǉ����܂��B
-�����āAPrism.Modularity.IModule�C���^�[�t�F�[�X�����������N���X���쐬���܂��B���̃N���X��Prism�̃��W���[���̃G���g���|�C���g�ɂȂ�܂��B
+ここでは簡単なModuleの使い方を示します。まず、Moduleを作るにはクラスライブラリプロジェクトを作成します。WPFのクラス群が最初から使えるようにカスタムコントロールかユーザコントロール用のライブラリを作成するのが手間が少なくていいです。クラスライブラリを作成したら、初期状態で作成されているクラスを削除してPrism.CoreとPrism.UnityをNuGetから追加します。
+そして、Prism.Modularity.IModuleインターフェースを実装したクラスを作成します。このクラスがPrismのモジュールのエントリポイントになります。
 
-�쐬����Module�́ABootstrapper�N���X�̂���v���W�F�N�g�Ƀv���W�F�N�g�Q�Ƃ�ǉ����āAConfigureModuleCatalog���\�b�h���I�[�o�[���C�h���Ĉȉ��̂悤�ȃR�[�h��Prism��Module�����邱�Ƃ�`���܂��B
+作成したModuleは、Bootstrapperクラスのあるプロジェクトにプロジェクト参照を追加して、ConfigureModuleCatalogメソッドをオーバーライドして以下のようなコードでPrismにModuleがあることを伝えます。
 
 ```cs
 protected override void ConfigureModuleCatalog()
@@ -19,20 +19,20 @@ protected override void ConfigureModuleCatalog()
 }
 ```
 
-�����ł́AHelloWorldModule.HelloWorldModule�N���X��IModule�����������N���X�ɂȂ�܂��B
+ここでは、HelloWorldModule.HelloWorldModuleクラスがIModuleを実装したクラスになります。
 
-### IModule�C���^�[�t�F�[�X
+### IModuleインターフェース
 
-IModule�C���^�[�t�F�[�X�́AInitialize���\�b�h���������̃V���v���ȃC���^�[�t�F�[�X�ł��B������Module�̏������������s���܂��B
+IModuleインターフェースは、Initializeメソッドを持つだけのシンプルなインターフェースです。ここでModuleの初期化処理を行います。
 
-## Region�ɂ���
+## Regionについて
 
-Module���쐬������̓I�ȃR�[�h�̑O��Region�ɂ��ĐG��Ă��������Ǝv���܂��BPrism��Module��g�ݗ��Ă邱�Ƃŏ_��ɃA�v���P�[�V�������\�z�ł��܂��B
-Module�Ԃ͑a�����ɍ����̂����z�I�ŁAModule���̃N���X�́A��������̃��b�Z�[�W���O�@�\���g���ĘA�g����̂����z�I�ł��B�iPrism�ɂ́A���b�Z�[�W���O�@�\���p�ӂ���Ă��܂��j
+Moduleを作成した具体的なコードの前にRegionについて触れておきたいと思います。PrismはModuleを組み立てることで柔軟にアプリケーションを構築できます。
+Module間は疎結合に作られるのが理想的で、Module内のクラスは、何かしらのメッセージング機構を使って連携するのが理想的です。（Prismには、メッセージング機構も用意されています）
 
-�_���Module��g�ݍ��킹�ăA�v���P�[�V��������邽�߂̉�ʑ��̎d�g�݂Ƃ���Region�Ƃ������̂�����܂��B��́AShell���������̋��iRegion�j�ɂ킯�āA�����ɑ΂��ĉ�ʕ��i�𗬂����ނ��Ƃŉ�ʑ�������Module�ō\�����ꂽ�Ƃ��ɂ��_��ɑΉ��ł���悤�ɂ��Ă��܂��B
+柔軟にModuleを組み合わせてアプリケーションを作るための画面側の仕組みとしてRegionというものがあります。れは、Shellをいくつかの区画（Region）にわけて、そこに対して画面部品を流し込むことで画面側も複数Moduleで構成されたときにも柔軟に対応できるようにしています。
 
-Region���g���ɂ́A��ʂ̋��Ƃ��Ĉ��������Ƃ����RegionName��t���܂��B
+Regionを使うには、画面の区画として扱いたいところにRegionNameを付けます。
 
 ```xml
 xmlns:prism="http://prismlibrary.com/"
@@ -40,41 +40,41 @@ xmlns:prism="http://prismlibrary.com/"
 <ContentControl prism:RegionManager.RegionName="MainRegion" />
 ```
 
-RegionName�������R���g���[���́AContentControl�̂ق���ItemsControl(���p�������R���g���[��)������܂��B
-ContentControl�́ARegion���ŃA�N�e�B�u�ɂȂ��View��1�x��1�Ȃ̂ɑ΂��āAItemsControl�͕�����View�ɑΉ����Ă���_���قȂ�܂��B
+RegionNameをつけれるコントロールは、ContentControlのほかにItemsControl(を継承したコントロール)があります。
+ContentControlは、Region内でアクティブになれるViewが1度に1つなのに対して、ItemsControlは複数のViewに対応している点が異なります。
 
-���̂悤��Region���쐬������APrism�̒񋟂���IRegionManager��RequestNavigate���Ăяo�����Ƃ�View��\���ł��܂��B
+このようにRegionを作成したら、Prismの提供するIRegionManagerのRequestNavigateを呼び出すことでViewを表示できます。
 
 
 ```cs
 this.RegionManager.RequestNavigate("MainRegion", nameof(HelloWorldView));
 ```
 
-## Module��Region���g�����v���O������
+## ModuleとRegionを使ったプログラム例
 
-�Ƃ������ƂŁAModule��Region���g�����ȒP�ȃv���O������g��ł��������Ǝv���܂��BModuleApp�Ƃ������O��WPF�A�v���P�[�V�������쐬���āAPrism.Core��Prism.Unity��NuGet����ǉ����܂��B
-�����āAShell.xaml���쐬����Bootstrapper�N���X���쐬���āA�\������Ƃ���܂ō쐬���܂��B
+ということで、ModuleとRegionを使った簡単なプログラムを組んでいきたいと思います。ModuleAppという名前でWPFアプリケーションを作成して、Prism.CoreとPrism.UnityをNuGetから追加します。
+そして、Shell.xamlを作成してBootstrapperクラスを作成して、表示するところまで作成します。
 
-### Module�̍쐬
+### Moduleの作成
 
-ModuleApp.HelloWorldModule�Ƃ������O��WPF �J�X�^���R���g���[�� ���C�u�������쐬���āA�J�X�^���R���g���[���̃R�[�h���폜���܂��B������Prism.Core��Prism.Unity��NuGet����ǉ����܂��B
-�����Ɋe��N���X������Ă����܂��B
+ModuleApp.HelloWorldModuleという名前でWPF カスタムコントロール ライブラリを作成して、カスタムコントロールのコードを削除します。そこにPrism.CoreとPrism.UnityをNuGetから追加します。
+ここに各種クラスを作っていきます。
 
-#### Models, ViewModels, Views���O���
+#### Models, ViewModels, Views名前空間
 
-����ɂ��͐��E�ƕ\������View���쐬���܂��B�܂��AModels���O��ԂɈȉ��̂悤�ȃ��b�Z�[�W��񋟂���N���X���쐬���܂��B
+こんにちは世界と表示するViewを作成します。まず、Models名前空間に以下のようなメッセージを提供するクラスを作成します。
 
 ```cs
 namespace ModuleApp.HelloWorldModule.Models
 {
     class MessageProvider
     {
-        public string Message { get; } = "����ɂ��͐��E";
+        public string Message { get; } = "こんにちは世界";
     }
 }
 ```
 
-�����āAHelloWorldViewModel�N���X���쐬���܂��B��قǂ�MessageProvider���C���W�F�N�V��������悤�ɂ��Ă��܂��B
+そして、HelloWorldViewModelクラスを作成します。先ほどのMessageProviderをインジェクションするようにしています。
 
 ```cs
 using Microsoft.Practices.Unity;
@@ -90,7 +90,7 @@ namespace ModuleApp.HelloWorldModule.ViewModels
 }
 ```
 
-�Ō�ɁAHelloWorldView���쐬���܂��BViews����ԂɃ��[�U�[�R���g���[�����쐬���āAXAML���ȉ��̂悤�ɕҏW���܂��B
+最後に、HelloWorldViewを作成します。Views生空間にユーザーコントロールを作成して、XAMLを以下のように編集します。
 
 ```xml
 <UserControl x:Class="ModuleApp.HelloWorldModule.Views.HelloWorldView"
@@ -109,13 +109,13 @@ namespace ModuleApp.HelloWorldModule.ViewModels
 </UserControl>
 ```
 
-prism���O��Ԃ̒ǉ���ViewModelLocator�̒ǉ������āA��قǍ쐬����HelloWorldViewModel��DataContext�ɐݒ肳���悤�ɂ��Ă��܂��B
-�����āATextBlock��MessageProvider��Message��\������悤�ɂ��Ă��܂��B
+prism名前空間の追加とViewModelLocatorの追加をして、先ほど作成したHelloWorldViewModelがDataContextに設定されるようにしています。
+そして、TextBlockにMessageProviderのMessageを表示するようにしています。
 
-#### IModule�C���^�[�t�F�[�X�̎���
+#### IModuleインターフェースの実装
 
-IModule�C���^�[�t�F�[�X�����������N���X���쐬���܂��BHelloWorldModule�Ƃ������O�̃N���X���v���W�F�N�g�����ɍ쐬���܂��B
-HelloWorldModule�N���X��Initialize���\�b�h��Module�Ŏg�p����N���X��IUnityContainer�ɓo�^������A��ʂ�Region�ɕ\��������Ƃ������������s���܂��B
+IModuleインターフェースを実装したクラスを作成します。HelloWorldModuleという名前のクラスをプロジェクト直下に作成します。
+HelloWorldModuleクラスのInitializeメソッドでModuleで使用するクラスをIUnityContainerに登録したり、画面をRegionに表示したりといった処理を行います。
 
 ```cs
 using Microsoft.Practices.Unity;
@@ -145,14 +145,14 @@ namespace ModuleApp.HelloWorldModule
 }
 ```
 
-IUnityContainer��IRegionManager���APrism����C���W�F�N�V�������Ă��炤���߂�Dependency�����������v���p�e�B�Ƃ��Ē�`���Ă��܂��B
-�����āAInitialize���\�b�h��RegisterType�����ĕK�v�ȃN���X��o�^���Ă��܂��B
+IUnityContainerとIRegionManagerを、PrismからインジェクションしてもらうためにDependency属性をつけたプロパティとして定義しています。
+そして、InitializeメソッドでRegisterTypeをして必要なクラスを登録しています。
 
-���ӓ_�Ƃ��ẮAView�̓o�^�͕K��object�^�Ƃ��ēo�^����K�v������_�ł��B�܂����O�͌^���œo�^����̂���ʓI�ł��B
+注意点としては、Viewの登録は必ずobject型として登録する必要がある点です。また名前は型名で登録するのが一般的です。
 
-�Ō��RegionManager��RequestNavigate���\�b�h�ŁAShell�ɒ�`���ꂽMainRegion��HelloWorldView�i���Unity�ɓo�^���Ă����j�𗬂�����ł��܂��B
+最後にRegionManagerのRequestNavigateメソッドで、Shellに定義されたMainRegionにHelloWorldView（上でUnityに登録しているやつ）を流し込んでいます。
 
-�����܂łŁA�v���W�F�N�g�͑�̂���Ȍ`�ɂȂ��Ă��܂��B
+ここまでで、プロジェクトは大体こんな形になっています。
 
 - ModuleApp
 	- Views
@@ -167,10 +167,10 @@ IUnityContainer��IRegionManager���APrism����C���W�F�N�V�������Ă��炤���߂�Depe
 		- HelloWorldView.xaml
 	- HelloWorldModule.cs
 
-#### Module��Bootstrapper�őg�ݍ���
+#### ModuleをBootstrapperで組み込む
 
-�Ō�ɁAModule��g�ݍ��ރR�[�h��Bootstrapper�ɒǉ����܂��BModule�̍\���́ABootstrapper��ConfigureModuleCatalog���\�b�h�ōs���܂��B
-������ModuleCatalog(IModuleCatalog�^)��ModuleCatalog�^�ɃL���X�g���āAAddModule�Ő�قǍ쐬����HelloWorldModule��ǉ����܂��B
+最後に、Moduleを組み込むコードをBootstrapperに追加します。Moduleの構成は、BootstrapperのConfigureModuleCatalogメソッドで行います。
+ここでModuleCatalog(IModuleCatalog型)をModuleCatalog型にキャストして、AddModuleで先ほど作成したHelloWorldModuleを追加します。
 
 ```cs
 using Microsoft.Practices.Unity;
@@ -205,5 +205,5 @@ namespace ModuleApp
 }
 ```
 
-���s����ƁAModule��Shell��HelloWorldModule�Œ�`���ꂽHelloWorldView���\������āA��ʂɂ���ɂ��͐��E�ƕ\������邱�Ƃ��m�F�ł��܂��B
+実行すると、ModuleがShellにHelloWorldModuleで定義されたHelloWorldViewが表示されて、画面にこんにちは世界と表示されることが確認できます。
 
