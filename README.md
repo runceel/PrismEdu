@@ -5,7 +5,6 @@
 
 ## Prism.Wpf
 + [PrismApplication を使おう](01.PrismApplication)
-+ [Bootstrapperを使おう](01.Bootstrap)
 + [ViewModelLocatorを使おう](02.ViewModelLocator)
 + [ModuleとRegionを使おう](03.Module)
 + [MVVMの基本クラス](04.MVVMBasic)
