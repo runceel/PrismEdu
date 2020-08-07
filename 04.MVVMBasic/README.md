@@ -1,120 +1,102 @@
-# MVVM‚ÌŠî–{ƒNƒ‰ƒX
+# MVVM ã®åŸºæœ¬ã‚¯ãƒ©ã‚¹
 
-‚±‚±‚Å‚ÍAPrism‚Å’ñ‹Ÿ‚³‚ê‚Ä‚¢‚éMVVM‚ÌŠî–{ƒNƒ‰ƒX‚É‚Â‚¢‚Äà–¾‚µ‚Ü‚·B
+ã“ã“ã§ã¯ã€Prism ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ MVVM ã®åŸºæœ¬ã‚¯ãƒ©ã‚¹ã«ã¤ã„ã¦èª¬æ˜ã—ã¾ã™ã€‚
 
-## BindableBaseƒNƒ‰ƒX
+## BindableBase ã‚¯ãƒ©ã‚¹
 
-BindableBaseƒNƒ‰ƒX‚ÍƒVƒ“ƒvƒ‹‚ÈINotifyPropertyChanged‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚·BSetPropertyƒƒ\ƒbƒh‚ğg‚Á‚ÄAƒVƒ“ƒvƒ‹‚ÉƒvƒƒpƒeƒB‚ğ’è‹`o—ˆ‚Ü‚·B
-—á‚¦‚ÎAInput‚Æ‚¢‚¤ƒvƒƒpƒeƒB‚ª‚ ‚èAOutput‚Æ‚¢‚¤Input‚ğ‚·‚×‚Ä‘å•¶š‚É‚µ‚½ƒvƒƒpƒeƒB‚ğ‚ÂƒNƒ‰ƒX‚Ì’è‹`‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B
+BindableBase ã‚¯ãƒ©ã‚¹ã¯ã‚·ãƒ³ãƒ—ãƒ«ãª INotifyPropertyChanged ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã™ã€‚SetProperty ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ã£ã¦ã€ã‚·ãƒ³ãƒ—ãƒ«ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å®šç¾©å‡ºæ¥ã¾ã™ã€‚
+ä¾‹ãˆã°ã€Input ã¨ã„ã†ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒã‚ã‚Šã€ãã‚Œã‚’å¤§æ–‡å­—ã«ã—ãŸã‚‚ã®ã‚’è¡¨ç¤ºã™ã‚‹ Output ã¨ã„ã†ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã¤ã‚¯ãƒ©ã‚¹ã®å®šç¾©ã‚’ BindableBase ã‚’ä½¿ã£ã¦ã‚„ã£ã¦ã¿ã¾ã—ã‚‡ã†ã€‚
 
 ```cs
 using Prism.Mvvm;
 
-namespace MVVMBasicApp.Module.ViewModels
+namespace MvvmBasicApp.HelloWorld.ViewModels
 {
-    class BindableBaseSampleViewModel : BindableBase
+    public class BindableBaseSampleViewModel : BindableBase
     {
-        public string HeaderText { get; } = "BindableBaseSample";
+        public string HeaderText => "BindableBaseSample";
 
-        private string input;
-
+        private string _input;
         public string Input
         {
-            get { return this.input; }
-            set
-            {
-                if (this.SetProperty(ref this.input, value))
-                {
-                    this.Output = this.Input?.ToUpper();
-                }
-            }
+            get { return _input; }
+            set { SetProperty(ref _input, value, () => RaisePropertyChanged(nameof(Output))); }
         }
 
-        private string output;
-
-        public string Output
-        {
-            get { return this.output; }
-            private set { this.SetProperty(ref this.output, value); }
-        }
-
+        public string Output => Input?.ToUpper();
     }
 }
 ```
 
-BindableBaseƒNƒ‰ƒX‚Å‚ÍAã‹L‚Ì‚æ‚¤‚ÉƒtƒB[ƒ‹ƒh‚ğ’è‹`‚µ‚ÄAsetƒƒ\ƒbƒh‚Ì’†‚ÅSetProperty(ref, this.fieldName, value)‚Æ‚¢‚¤Œ`‚Å’l‚Ìİ’è‚ğs‚¢‚Ü‚·B
-‚±‚ê‚¾‚¯‚ÅAPropertyChangedƒCƒxƒ“ƒg‚Ü‚Å”­s‚µ‚Ä‚­‚ê‚Ü‚·B
+BindableBase ã‚¯ãƒ©ã‚¹ã§ã¯ã€ä¸Šè¨˜ã®ã‚ˆã†ã«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’å®šç¾©ã—ã¦ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã® set ã‚¢ã‚¯ã‚»ã‚µãƒ¼ã®ä¸­ã§ SetProperty(ref _fieldName, value, onChanged) ã¨ã„ã†å½¢ã§å€¤ã®è¨­å®šã‚’è¡Œã„ã¾ã™ã€‚onChanged ã¯çœç•¥å¯èƒ½ãªã®ã§ä»Šå›ã®ã‚ˆã†ã« Input ã®å¤‰æ›´ã«é€£å‹•ã—ã¦ Output ã‚‚å¤‰æ›´é€šçŸ¥ã—ãŸã„ã¨ã„ã£ãŸã‚ˆã†ã«è¿½åŠ å‡¦ç†ãŒãªã„å ´åˆã¯ `SetProperty(ref _fieldName, value)` ã®ã‚ˆã†ã«æ›¸ã‘ã¾ã™ã€‚
+ã“ã‚Œã ã‘ã§ã€PropertyChanged ã‚¤ãƒ™ãƒ³ãƒˆã®ç™ºè¡Œã‚„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®å¤‰æ›´ãŒã‚ã£ãŸã¨ãã®ã¿ã®å‡¦ç†ãªã©ã‚’å®Ÿç¾ã§ãã¾ã™ã€‚
 
-## DelegateCommandƒNƒ‰ƒX
+## DelegateCommand ã‚¯ãƒ©ã‚¹
 
-MVVM‚Åg—p‚·‚éCommand‚ÌÀ‘•ƒNƒ‰ƒX‚àPrism‚Å‚Í’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚·B
-DelegateCommand‚ª‚»‚ÌƒNƒ‰ƒX‚É‚È‚è‚Ü‚·B
-DelegateCommand‚ÍAƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚ÉExecute‚ÉÀs‚³‚ê‚éˆ—‚ÆACanExecute‚ÉÀs‚³‚ê‚éˆ—‚ğ“n‚µ‚Ü‚·BCanExecute‚Ìˆ—‚ÍÈ—ª‰Â”\‚ÅAÈ—ª‚µ‚½ê‡‚Íí‚ÉÀs‰Â”\‚ÈƒRƒ}ƒ“ƒh‚É‚È‚è‚Ü‚·B
+MVVM ã§ä½¿ç”¨ã™ã‚‹ Command ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚‚ Prism ã§ã¯æä¾›ã—ã¦ã„ã¾ã™ã€‚DelegateCommand ãŒãã®ã‚¯ãƒ©ã‚¹ã«ãªã‚Šã¾ã™ã€‚
+DelegateCommand ã¯ã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ã« Execute æ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹å‡¦ç†ã¨ã€CanExecute æ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹å‡¦ç†ã‚’æ¸¡ã—ã¾ã™ã€‚CanExecute æ™‚ã®å‡¦ç†ã¯çœç•¥å¯èƒ½ã§ã€çœç•¥ã—ãŸå ´åˆã¯å¸¸ã«å®Ÿè¡Œå¯èƒ½ãªã‚³ãƒãƒ³ãƒ‰ã«ãªã‚Šã¾ã™ã€‚
 
-Prism 6.0‚ÌDelegateCommand‚ÌV‹@”\‚Æ‚µ‚ÄACanExecuteChanged‚ÌŒÄ‚Ño‚µ‚ğƒvƒƒpƒeƒB‚Ì•ÏX‚ğŠÄ‹‚µ‚ÄŒÄ‚Ño‚µ‚Ä‚­‚ê‚é‹@”\‚ª’Ç‰Á‚³‚ê‚Ü‚µ‚½B
-ObservePropertyƒƒ\ƒbƒh‚ª‚»‚ê‚É‚È‚è‚Ü‚·BˆÈ‰º‚Ì‚æ‚¤‚Ég—p‚µ‚Ü‚·B
+DelegateCommand ã§ã¯ CanExecuteChanged ã®å‘¼ã³å‡ºã—ã‚’ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å¤‰æ›´ã‚’ç›£è¦–ã—ã¦è¡Œã†ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚
+OvserveProperty ã«å¼æœ¨ã§ç›£è¦–å¯¾è±¡ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¾ã†ã€‚
 
 ```cs
-command.ObserveProperty(() => this.Hoge);
+command.ObserveProperty(() => Hoge);
 ```
 
-‚±‚ê‚ÅAHogeƒvƒƒpƒeƒB‚ğŠÄ‹‚µ‚ÄHogeƒvƒƒpƒeƒB‚É•ÏX‚ª‚ ‚Á‚½‚çCanExecuteChanged‚ğŒÄ‚Ño‚µ‚Ä‚­‚ê‚Ü‚·B‚±‚Ì‚Ù‚©‚ÉAboolŒ^‚ÌƒvƒƒpƒeƒB‚ğó‚¯æ‚èA‚»‚Ì’l‚ğCanExecute‚ÌŒ‹‰Ê‚Æ‚µ‚Ä•Ô‚µ‚Â‚ÂƒvƒƒpƒeƒB‚Ì•ÏXŠÄ‹‚ğ‚·‚éObserveCanExecuteƒƒ\ƒbƒh‚à’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·B
+ã“ã‚Œã§ã€Hoge ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç›£è¦–ã—ã¦ Hoge ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¤‰æ›´ãŒã‚ã£ãŸã‚‰ CanExecuteChanged ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºè¡Œã—ã¾ã™ã€‚ã“ã®ã»ã‹ã«ã€bool å‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å—ã‘å–ã‚Šã€ãã®å€¤ã‚’ CanExecute ã®çµæœã¨ã—ã¦è¿”ã—ã¤ã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å¤‰æ›´ç›£è¦–ã‚’ã™ã‚‹ ObserveCanExecute ãƒ¡ã‚½ãƒƒãƒ‰ã‚‚æä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
-Command‚ğÀs‚µ‚½‚çAInputƒvƒƒpƒeƒB‚Ì’l‚ğ‘å•¶š‚É‚µ‚ÄOutputƒvƒƒpƒeƒB‚É•ÏŠ·‚·‚éƒRƒ}ƒ“ƒhiInput‚ª–¢“ü—Í‚Ìê‡‚ÍÀs‚Å‚«‚È‚¢j‚ğ‚Á‚½ViewModel‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B
+Command ã‚’å®Ÿè¡Œã—ãŸã‚‰ã€Input ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å¤§æ–‡å­—ã«ã—ã¦ Output ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¤‰æ›ã™ã‚‹ã‚³ãƒãƒ³ãƒ‰ï¼ˆInput ãŒæœªå…¥åŠ›ã®å ´åˆã¯å®Ÿè¡Œã§ããªã„ï¼‰ã‚’æŒã£ãŸ ViewModelã¯ ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
 
 ```cs
 using Prism.Commands;
 using Prism.Mvvm;
 
-namespace MVVMBasicApp.Module.ViewModels
+namespace MvvmBasicApp.HelloWorld.ViewModels
 {
-    class DelegateCommandSampleViewModel : BindableBase
+    public class DelegateCommandSampleViewModel : BindableBase
     {
-        public string HeaderText { get; } = "DelegateCommandSample";
+        public string HeaderText => "DelegateCommandSample";
 
-        private string input;
-
+        private string _input;
         public string Input
         {
-            get { return this.input; }
-            set { this.SetProperty(ref this.input, value); }
+            get { return _input; }
+            // Input ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå¤‰æ›´ã•ã‚ŒãŸã‚‰ ToUpperCommandEnabled ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚‚åå‘é€šçŸ¥ã‚’ã™ã‚‹
+            set { SetProperty(ref _input, value, () => RaisePropertyChanged(nameof(ToUpperCommandEnabled))); }
         }
 
-        private string output;
-
+        private string _outpu;
         public string Output
         {
-            get { return this.output; }
-            set { this.SetProperty(ref this.output, value); }
+            get { return _outpu; }
+            private set { SetProperty(ref _outpu, value); }
         }
 
-        public DelegateCommand ToUpperCommand { get; }
+        private DelegateCommand _toUpperCommand;
+        public DelegateCommand ToUpperCommand =>
+            _toUpperCommand ?? (_toUpperCommand = new DelegateCommand(ExecuteToUpperCommand)
+                // ToUpperCommandEnabled ã‚’ CanExecute ã¨ç´ã¥ã‘ã‚‹
+                .ObservesCanExecute(() => ToUpperCommandEnabled));
 
-        public DelegateCommandSampleViewModel()
+        private void ExecuteToUpperCommand()
         {
-            // create command
-            this.ToUpperCommand = new DelegateCommand(() =>
-                {
-                    this.Output = this.Input.ToUpper();
-                },
-                () => !string.IsNullOrWhiteSpace(this.Input));
-
-            // CanExecuteChanged trigger
-            this.ToUpperCommand.ObservesProperty(() => this.Input);
+            Output = Input.ToUpper();
         }
+
+        // Input ãŒç©ºã®å ´åˆã¯å®Ÿè¡Œã§ããªã„
+        public bool ToUpperCommandEnabled => !string.IsNullOrWhiteSpace(Input);
     }
 }
 ```
 
-## ErrorsContainerƒNƒ‰ƒX(WPF‚Ì‚İ)
+## ErrorsContainer ã‚¯ãƒ©ã‚¹
 
-Prism‚É‚ÍAINotifyDataErrorInfoƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌÀ‘•‚ğ•â•‚·‚éErrorsContainerƒNƒ‰ƒX‚ª‚ ‚è‚Ü‚·B‚±‚ÌƒNƒ‰ƒX‚ğg‚¤‚±‚Æ‚ÅŠÈ’P‚ÉINotifyDataErrorInfo‚ğg‚Á‚½“ü—Í’l‚ÌŒŸØ‹@”\‚ğ‚Á‚½ƒNƒ‰ƒX‚ğì¬‚Å‚«‚Ü‚·B
-ErrorsContainerƒNƒ‰ƒX‚ÍAŒ^ˆø”‚ÉƒGƒ‰[‚ÌŒ^(‘å‘Ìstring)‚ğw’è‚µ‚Äg‚¢‚Ü‚·B
-ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚É‚ÍAErrorsChangedƒCƒxƒ“ƒg‚ÌŒÄ‚Ño‚µˆ—‚ğ“n‚µ‚Ü‚·B
-‚»‚µ‚ÄAINotifyDataErrorInfoƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌHasErrsƒvƒƒpƒeƒB‚ÆAGetErrorsƒƒ\ƒbƒh‚Ìˆ—‚ğ‚â‚Á‚Ä‚­‚ê‚éƒƒ\ƒbƒh‚ğ‚Á‚Ä‚¢‚Ü‚·B‚»‚Ì‚½‚ßAINotifyDataErrorInfo‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚Í
-ErrorsContainer‚ÉˆÚ÷‚·‚é‚¾‚¯‚Å‚·‚İ‚Ü‚·B
+Prism ã«ã¯ã€INotifyDataErrorInfo ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚’è£œåŠ©ã™ã‚‹ ErrorsContainer ã‚¯ãƒ©ã‚¹ãŒã‚ã‚Šã¾ã™ã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ä½¿ã†ã“ã¨ã§ç°¡å˜ã« INotifyDataErrorInfo ã‚’ä½¿ã£ãŸå…¥åŠ›å€¤ã®æ¤œè¨¼æ©Ÿèƒ½ã‚’æŒã£ãŸã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã§ãã¾ã™ã€‚
+ErrorsContainer ã‚¯ãƒ©ã‚¹ã¯ã€å‹å¼•æ•°ã«ã‚¨ãƒ©ãƒ¼ã®å‹(åŸºæœ¬çš„ã« string ã«ãªã‚Šã¾ã™)ã‚’æŒ‡å®šã—ã¦ä½¿ã„ã¾ã™ã€‚
+ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã«ã¯ã€ErrorsChanged ã‚¤ãƒ™ãƒ³ãƒˆã®å‘¼ã³å‡ºã—å‡¦ç†ã‚’æ¸¡ã—ã¾ã™ã€‚
+ãã—ã¦ã€ErrorsContainer ã«ã¯ HasErrors ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã€GetErrors ãƒ¡ã‚½ãƒƒãƒ‰ã®å‡¦ç†ãŒã‚ã‚‹ã®ã§ã€ã“ã‚Œã‚’ INotifyDataErrorInfo ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®åŒåã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ç§»è­²ã™ã‚‹ã¨ INotifyDataErrorInfo ã®å®Ÿè£…ãŒå‡ºæ¥ã¾ã™ã€‚
 
-‚ ‚Æ‚ÍA”CˆÓ‚Ìƒ^ƒCƒ~ƒ“ƒO‚ÅSetErrors(propertyName, errorInfo)‚ÅƒGƒ‰[î•ñ‚ğİ’è‚µ‚ÄAClearErrors(propertyName)‚ÅƒGƒ‰[‚ÌƒNƒŠƒA‚ğ‚·‚é‚¾‚¯‚Å‚·BˆÈ‰º‚ÉŠÈ’P‚ÉINotifyDataErrorInfo‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚Ì—á‚ğ¦‚µ‚Ü‚·B
+ãã—ã¦ã€ä»»æ„ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ SetErrors(propertyName, errorInfo) ã§ã‚¨ãƒ©ãƒ¼æƒ…å ±ã‚’è¨­å®šã—ã¦ã€ClearErrors(propertyName) ã§ã‚¨ãƒ©ãƒ¼ã®ã‚¯ãƒªã‚¢ã‚’ã—ã¾ã™ã€‚ä»¥ä¸‹ã« INotifyDataErrorInfo ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã®ä¾‹ã‚’ç¤ºã—ã¾ã™ã€‚
 
 ```cs
 using Prism.Mvvm;
@@ -126,36 +108,34 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace MVVMBasicApp.Module.ViewModels
+namespace MvvmBasicApp.HelloWorld.ViewModels
 {
-    class ErrorsContainerSampleViewModel : BindableBase, INotifyDataErrorInfo
+    public class ErrorsContainerSampleViewModel : BindableBase, INotifyDataErrorInfo
     {
-        public string HeaderText { get; } = "ErrorContainerSample";
+        public string HeaderText => "ErrorContainerSample";
 
-        private string input;
+        private string _input;
 
-        [Required(ErrorMessage = "“ü—Í‚µ‚Ä‚­‚¾‚³‚¢")]
+        [Required(ErrorMessage = "å…¥åŠ›ã—ã¦ãã ã•ã„")]
         public string Input
         {
-            get { return this.input; }
-            set { this.SetProperty(ref this.input, value); }
+            get { return _input; }
+            set { SetProperty(ref _input, value); }
         }
 
-
-        public ErrorsContainerSampleViewModel()
-        {
-            this.ErrorsContainer = new ErrorsContainer<string>(
-                x => this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(x)));
-        }
-
-        #region Validation
         private ErrorsContainer<string> ErrorsContainer { get; }
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
+        public ErrorsContainerSampleViewModel()
+        {
+            ErrorsContainer = new ErrorsContainer<string>(
+                x => ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(x)));
+        }
+
         protected override bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
-            if(!base.SetProperty<T>(ref storage, value, propertyName))
+            if (!base.SetProperty(ref storage, value, propertyName))
             {
                 return false;
             }
@@ -178,21 +158,20 @@ namespace MVVMBasicApp.Module.ViewModels
             return true;
         }
 
-        public bool HasErrors
-        {
-            get
-            {
-                return this.ErrorsContainer.HasErrors;
-            }
-        }
-		Data
-        public IEnumerable GetErrors(string propertyName)
-        {
-            return this.ErrorsContainer.GetErrors(propertyName);
-        }
-        #endregion
+        public bool HasErrors => ErrorsContainer.HasErrors;
+
+        public IEnumerable GetErrors(string propertyName) => ErrorsContainer.GetErrors(propertyName);
     }
 }
 ```
 
-BindableBaseƒNƒ‰ƒX‚ÌSetPropertyƒƒ\ƒbƒh‚ğƒI[ƒo[ƒ‰ƒCƒh‚µ‚ÄADataAnnotations‚ğg‚Á‚½“ü—Í’l‚ÌŒŸØ‚ğ‚µ‚Ä‚¢‚éƒNƒ‰ƒX‚É‚È‚è‚Ü‚·BInputƒvƒƒpƒeƒB‚ª–¢“ü—Í‚Ìê‡‚ÍƒGƒ‰[‚É‚È‚è‚Ü‚·B
+BindableBase ã‚¯ãƒ©ã‚¹ã® SetProperty ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã€DataAnnotations ã‚’ä½¿ã£ãŸå…¥åŠ›å€¤ã®æ¤œè¨¼ã‚’ã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã«ãªã‚Šã¾ã™ã€‚Input ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæœªå…¥åŠ›ã®å ´åˆã¯ã‚¨ãƒ©ãƒ¼ã«ãªã‚Šã¾ã™ã€‚
+
+## ã¾ã¨ã‚
+
+ã“ã“ã§ã¯ MVVM ã§é–‹ç™ºã™ã‚‹ã¨ãã«èª°ã‚‚ãŒæ›¸ãå¿…è¦ãŒã‚ã‚‹ã‚³ãƒ¼ãƒ‰ã‚’çœåŠ›åŒ–ã™ã‚‹ãŸã‚ã® Prism ã®æ©Ÿèƒ½ã‚’ç´¹ä»‹ã—ã¾ã—ãŸã€‚
+ã“ã“ã§ç¤ºã—ãŸã‚³ãƒ¼ãƒ‰ã¯ã€å®Ÿéš›ã« GitHub ãƒªãƒã‚¸ãƒˆãƒªãƒ¼ã® 04.MVVMBasic ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã«ã‚ã‚‹ã‚¢ãƒ—ãƒªã§å‹•ä½œç¢ºèªãŒå‡ºæ¥ã¾ã™ã€‚
+
+å®Ÿè¡Œã™ã‚‹ã¨ä»¥ä¸‹ã®ã‚ˆã†ãªç”»é¢ãŒè¡¨ç¤ºã•ã‚Œã¦ã€å·¦ã‹ã‚‰ BindableBase, DelegateCommand, ErrorsContainer ã®å‹•ä½œç¢ºèªã‚’ã™ã‚‹ãŸã‚ã® ViewModel ã«ç´ã¥ã„ãŸ View ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
+
+![](images/2020-08-07-23-48-16.png)
