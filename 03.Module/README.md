@@ -236,3 +236,8 @@ namespace ModuleApp
 実行すると MainRegion に HelloWorldModule で作成した画面が表示されています。
 
 ![](images/helloworld.png)
+
+## まとめ
+
+Prism は、App クラスがある画面のウィンドウで Region を定義して、その Region に Module から View を表示して画面を作っていきます。
+画面遷移などについても別の場所で触れますが、基本的にこの流れになります。
